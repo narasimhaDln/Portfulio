@@ -1,4 +1,7 @@
-import "../Styles/About.css"
+
+import "../Styles/About.css";
+import profileImage from "../assets/profile.jpg";  // Import the image
+
 const About = () => {
   return (
     <section id="about" className="about">
@@ -6,7 +9,7 @@ const About = () => {
         <h2 className="section-title">About Me</h2>
         <div className="about-grid">
           <img
-            src="https://images.unsplash.com/photo-1517849845537-4d257902454a"
+            src={profileImage}  // Use the imported image
             alt="Profile"
             className="about-image"
           />
