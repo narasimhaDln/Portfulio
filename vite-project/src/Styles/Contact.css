@@ -1,0 +1,127 @@
+.contact {
+  padding: 6rem 0;
+  background: rgb(2, 0, 36);
+  background: linear-gradient(
+    90deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(174, 16, 16, 1) 97%
+  );
+  box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset,
+    rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset,
+    rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset,
+    rgba(0, 0, 0, 0.09) 0px 8px 16px;
+  color: #e0f2fe;
+}
+.contact p {
+  color: #f8fafc;
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+  font-weight: 400;
+  text-align: center;
+  line-height: 1.5;
+}
+
+.contact-form {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 2.5rem;
+  border-radius: 1rem;
+  box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset,
+    rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset,
+    rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset,
+    rgba(0, 0, 0, 0.25) 0px 8px 32px;
+  background: rgb(58, 114, 180);
+  background: linear-gradient(
+    90deg,
+    rgba(58, 114, 180, 1) 4%,
+    rgba(29, 116, 253, 1) 31%,
+    rgba(252, 176, 69, 1) 93%
+  );
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #e0f2fe; /* Light blue */
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  font-size: 0.95rem;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  color: #f8fafc; /* Very light gray */
+  transition: all 0.3s ease;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #60a5fa; /* Light blue */
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 0 0 4px rgba(96, 165, 250, 0.1);
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 1rem;
+  background: rgb(2, 0, 36);
+  background: linear-gradient(
+    90deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(48, 96, 122, 1) 12%,
+    rgba(16, 174, 26, 1) 87%
+  );
+  background-size: 200% 200%;
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.submit-btn:hover {
+  transform: translateY(-2px);
+  background-position: right center;
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.5),
+    0 0 0 2px rgba(255, 255, 255, 0.1);
+}
+
+.submit-btn:active {
+  transform: translateY(0);
+}
+
+/* Optional: Add focus styles for accessibility */
+.submit-btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px #fff, 0 0 0 4px rgba(59, 130, 246, 0.5);
+}
+
+/* Optional: Style autofill state */
+.form-group input:-webkit-autofill,
+.form-group input:-webkit-autofill:hover,
+.form-group input:-webkit-autofill:focus {
+  -webkit-text-fill-color: #f8fafc;
+  -webkit-box-shadow: 0 0 0px 1000px #1e1b4b inset;
+  transition: background-color 5000s ease-in-out 0s;
+}
