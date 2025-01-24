@@ -18,13 +18,6 @@ import Skills from "./Components/Skills";
 function App() {
   return (
     <div>
-      {/* <Navbar />
-      <Hero />
-      <About />
-      <Projects />
-      <Skills />
-      <Contact />
-      <Footer /> */}
       <Navbar/>
       <Hero/>
       <About/>

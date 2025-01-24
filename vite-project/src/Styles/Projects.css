@@ -1,115 +1,198 @@
 .projects {
-  padding: 6rem 0;
-  background-color: #1e1b4b;
-}
-.resume-btn {
-  display: inline-block;
-  padding: 10px 20px;
-  background-color: #007bff;
-  color: #fff;
-  text-decoration: none;
-  border-radius: 5px;
-  font-size: 16px;
-  font-weight: bold;
-  margin-bottom: 20px;
+  min-height: 100vh;
+  background: linear-gradient(to bottom, #1a1a2e, #16213e);
+
+  color: white;
+  padding: 5rem 1rem;
+  background-color: aqua;
 }
 
-.resume-btn:hover {
-  background-color: #0056b3;
+.projects-section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  background: linear-gradient(to right, #60a5fa, #a78bfa);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.section-description {
+  color: #9ca3af;
+  margin-bottom: 2rem;
+  max-width: 36rem;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #1a1a2e;
+}
+
+.resume-button {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.75rem 1.5rem;
+  background-color: #2563eb;
+  color: white;
+  font-weight: 500;
+  border-radius: 0.5rem;
+  text-decoration: none;
+  transition: background-color 0.2s;
+}
+
+.resume-button:hover {
+  background-color: #1d4ed8;
+}
+
+.button-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+  margin-right: 0.5rem;
+}
+
+.resume-button:hover .button-icon {
+  animation: bounce 1s infinite;
 }
 
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-template-columns: 1fr;
   gap: 2rem;
 }
 
+@media (min-width: 768px) {
+  .projects-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 .project-card {
-  background: black;
-  border-radius: 1rem;
+  /* background-color: rgba(11, 12, 12, 0.5); */
+  background-color: #1a1a2e;
+  border-radius: 0.75rem;
   overflow: hidden;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  color: white;
+  transition: all 0.3s;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .project-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  transform: translateY(-0.5rem);
+  box-shadow: 0 8px 16px rgba(37, 99, 235, 0.2);
+}
+
+.image-container {
+  position: relative;
+  overflow: hidden;
 }
 
 .project-image {
   width: 100%;
-  height: 200px;
+  height: 16rem;
   object-fit: cover;
+  transition: transform 0.3s;
+}
+
+.project-card:hover .project-image {
+  transform: scale(1.05);
+}
+
+.image-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(17, 24, 39, 1),
+    rgba(17, 24, 39, 0.4),
+    transparent
+  );
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.project-card:hover .image-overlay {
+  opacity: 1;
 }
 
 .project-content {
   padding: 1.5rem;
 }
 
-.project-content h3 {
+.project-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 0.75rem;
+  color: #60a5fa;
+}
+
+.project-description {
+  color: #9ca3af;
   margin-bottom: 1rem;
-  color: #1e293b;
+  line-height: 1.6;
+}
+
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.tag {
+  padding: 0.25rem 0.75rem;
+  background-color: rgba(37, 99, 235, 0.2);
+  color: #60a5fa;
+  border-radius: 9999px;
+  font-size: 0.875rem;
 }
 
 .project-links {
   display: flex;
   gap: 1rem;
-  margin-top: 1rem;
 }
 
-.project-links a {
-  display: flex;
+.github-button,
+.demo-button {
+  display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
   padding: 0.5rem 1rem;
   border-radius: 0.5rem;
   text-decoration: none;
-  color: #3b82f6;
-  background: #e0f2fe;
-  transition: all 0.3s ease;
+  transition: background-color 0.2s;
 }
 
-.project-links a:hover {
-  background: #3b82f6;
+.github-button {
+  background-color: #374151;
   color: white;
 }
 
-/* Skills Section */
-.skills {
-  padding: 6rem 0;
-  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+.github-button:hover {
+  background-color: #4b5563;
 }
 
-.skills-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 2rem;
-  justify-items: center;
-  box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset,
-    rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset,
-    rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px,
-    rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px,
-    rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+.demo-button {
+  background-color: #2563eb;
+  color: white;
 }
 
-.skill-item {
-  text-align: center;
-  padding: 1.5rem;
-  background: white;
-  border-radius: 1rem;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
-  width: 100%;
+.demo-button:hover {
+  background-color: #1d4ed8;
 }
 
-.skill-item:hover {
-  transform: translateY(-10px);
-}
-
-.skill-icon {
-  width: 64px;
-  height: 64px;
-  margin-bottom: 1rem;
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-25%);
+  }
 }

@@ -5,8 +5,7 @@ const Contact = () => {
       <div className="section-content">
         <h2 className="section-title">Get In Touch</h2>
         <p>
-          Looking for freelance or full-time opportunities. Reach out, and
-          let's work on something great!
+          Looking for freelance or full-time opportunities. Reach out, and let's work on something great!
         </p>
         <form
           className="contact-form"
