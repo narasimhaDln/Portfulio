@@ -18,7 +18,7 @@ const projects = [
     ],
     github:
       "https://github.com/narasimhaDln/VirtualClassRoom/tree/main/vite-project",
-    demo: "https://mernauth-1-eicr.onrender.com/login",
+    demo: "https://silly-bonbon-e1d209.netlify.app/login",
     featured: true,
   },
   {
@@ -39,7 +39,7 @@ const projects = [
       "Render",
     ],
     github: "https://github.com/narasimhaDln/mernAuth",
-    demo: "https://67f2bdf8244950f73f9fe69a--gilded-pothos-3395d2.netlify.app/",
+    demo: "https://mernauth-1-eicr.onrender.com/login",
     featured: true,
   },
 ];
