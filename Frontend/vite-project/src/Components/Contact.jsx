@@ -1,7 +1,12 @@
 import { Send, Mail, ArrowRight } from "lucide-react";
 import { useState } from "react";
 import toast from "react-hot-toast";
-
+import axios from "axios";
+const API_URL =
+  import.meta.env.MODE === "development"
+    ? "http://localhost:4000/email/send"
+    : "email/send/contact";
+axios.defaults.withCredentials = true;
 const Contact = () => {
   const [isLoading, setIsLoading] = useState(false);
   const handleSubmit = async (e) => {
@@ -14,7 +19,7 @@ const Contact = () => {
     };
 
     try {
-      const res = await fetch("https://portfulio-84ng.onrender.com/contact", {
+      const res = await fetch(`${API_URL}/contact`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),

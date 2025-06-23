@@ -18,7 +18,7 @@ const projects = [
     ],
     github:
       "https://github.com/narasimhaDln/VirtualClassRoom/tree/main/vite-project",
-    demo: "https://silly-bonbon-e1d209.netlify.app/login",
+    demo: "https://mernauth-1-eicr.onrender.com/login",
     featured: true,
   },
   {
