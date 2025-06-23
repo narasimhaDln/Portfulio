@@ -12,6 +12,7 @@ const Contact = () => {
       email: e.target.email.value,
       message: e.target.message.value,
     };
+
     try {
       const res = await fetch("https://portfulio-84ng.onrender.com/contact", {
         method: "POST",
