@@ -3,9 +3,8 @@ import { useState } from "react";
 import toast from "react-hot-toast";
 import axios from "axios";
 const API_URL =
-  import.meta.env.MODE === "development"
-    ? "http://localhost:4000/email/send"
-    : "email/send/contact";
+  import.meta.env.MODE === "development" ? "http://localhost:4000" : "";
+
 axios.defaults.withCredentials = true;
 const Contact = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -19,11 +18,12 @@ const Contact = () => {
     };
 
     try {
-      const res = await fetch(`${API_URL}/contact`, {
+      const res = await fetch(`${API_URL}/email/send/contact`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       });
+
       const data = await res.json();
       if (data.success) {
         toast.success("Message Sent Successfully");
