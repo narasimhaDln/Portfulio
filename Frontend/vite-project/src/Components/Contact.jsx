@@ -50,8 +50,7 @@ const Contact = () => {
           </h2>
           <div className="w-20 h-1 bg-gradient-to-r from-blue-500 to-teal-500 mx-auto rounded-full mb-8"></div>
           <p className="text-slate-300 text-lg max-w-2xl mx-auto leading-relaxed">
-            Looking for freelance or full-time opportunities. Reach out, and
-            let's work on something great!
+            Looking for freelance or full-time opportunities. Reach out, and let's work on something great!
             <span className="inline-flex items-center ml-2 text-blue-400 hover:text-blue-300 transition-colors">
               <ArrowRight className="w-5 h-5 ml-1" />
             </span>
