@@ -6,29 +6,30 @@ import Hero from "./Components/Hero";
 import Navbar from "./Components/Navbar";
 import Projects from "./Components/Projects";
 import Skills from "./Components/Skills";
+import { Toaster } from "react-hot-toast";
 
 function App() {
   useEffect(() => {
     // Smooth scroll behavior for anchor links
     const handleAnchorClick = (e) => {
-      const href = e.target.closest('a')?.getAttribute('href');
-      if (href?.startsWith('#')) {
+      const href = e.target.closest("a")?.getAttribute("href");
+      if (href?.startsWith("#")) {
         e.preventDefault();
         document.querySelector(href)?.scrollIntoView({
-          behavior: 'smooth'
+          behavior: "smooth",
         });
       }
     };
 
-    document.addEventListener('click', handleAnchorClick);
-    return () => document.removeEventListener('click', handleAnchorClick);
+    document.addEventListener("click", handleAnchorClick);
+    return () => document.removeEventListener("click", handleAnchorClick);
   }, []);
 
   return (
     <div className="relative min-h-screen bg-slate-900 text-white overflow-hidden">
       {/* Background gradient */}
       <div className="fixed inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900"></div>
-      
+
       {/* Moving background particles */}
       <div className="fixed inset-0 opacity-30">
         <div className="absolute top-1/4 -left-48 w-96 h-96 bg-blue-500/10 rounded-full mix-blend-multiply filter blur-3xl animate-blob"></div>
@@ -48,6 +49,7 @@ function App() {
         </main>
         <Footer />
       </div>
+      <Toaster />
     </div>
   );
 }

@@ -1,8 +1,42 @@
-import { Send, Mail, ArrowRight } from 'lucide-react';
+import { Send, Mail, ArrowRight } from "lucide-react";
+import { useState } from "react";
+import toast from "react-hot-toast";
 
 const Contact = () => {
+  const [isLoading, setIsLoading] = useState(false);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsLoading(true);
+    const formData = {
+      name: e.target.name.value,
+      email: e.target.email.value,
+      message: e.target.message.value,
+    };
+    try {
+      const res = await fetch("http://localhost:3000/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+      const data = await res.json();
+      if (data.success) {
+        toast.success("Message Sent Successfully");
+        e.target.reset();
+      } else {
+        toast.error("Message Failed");
+      }
+    } catch (erorr) {
+      console.log("Submit error", error);
+      toast.error("SOmething went wrong");
+    } finally {
+      setIsLoading(false);
+    }
+  };
   return (
-    <section id="contact" className="py-20 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
+    <section
+      id="contact"
+      className="py-20 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900"
+    >
       <div className="max-w-4xl mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-teal-400 inline-block mb-4">
@@ -10,7 +44,8 @@ const Contact = () => {
           </h2>
           <div className="w-20 h-1 bg-gradient-to-r from-blue-500 to-teal-500 mx-auto rounded-full mb-8"></div>
           <p className="text-slate-300 text-lg max-w-2xl mx-auto leading-relaxed">
-            Looking for freelance or full-time opportunities. Reach out, and let's work on something great!
+            Looking for freelance or full-time opportunities. Reach out, and
+            let's work on something great!
             <span className="inline-flex items-center ml-2 text-blue-400 hover:text-blue-300 transition-colors">
               <ArrowRight className="w-5 h-5 ml-1" />
             </span>
@@ -22,9 +57,13 @@ const Contact = () => {
             className="space-y-6"
             action="https://formsubmit.co/narasimha34327@gmail.com"
             method="POST"
+            onSubmit={handleSubmit}
           >
             <div className="space-y-2">
-              <label htmlFor="name" className="block text-slate-300 font-medium">
+              <label
+                htmlFor="name"
+                className="block text-slate-300 font-medium"
+              >
                 Name
               </label>
               <input
@@ -38,7 +77,10 @@ const Contact = () => {
             </div>
 
             <div className="space-y-2">
-              <label htmlFor="email" className="block text-slate-300 font-medium">
+              <label
+                htmlFor="email"
+                className="block text-slate-300 font-medium"
+              >
                 Email
               </label>
               <input
@@ -52,7 +94,10 @@ const Contact = () => {
             </div>
 
             <div className="space-y-2">
-              <label htmlFor="message" className="block text-slate-300 font-medium">
+              <label
+                htmlFor="message"
+                className="block text-slate-300 font-medium"
+              >
                 Message
               </label>
               <textarea
@@ -67,9 +112,10 @@ const Contact = () => {
 
             <button
               type="submit"
+              disabled={isLoading}
               className="w-full bg-gradient-to-r from-blue-500 to-teal-500 text-white font-semibold py-4 px-8 rounded-lg hover:from-blue-600 hover:to-teal-600 transform hover:scale-[1.02] transition-all duration-300 flex items-center justify-center group"
             >
-              <span>Send Message</span>
+              <span>{isLoading ? "Sending..." : "Send Message"}</span>
               <Send className="w-5 h-5 ml-2 transform group-hover:translate-x-1 transition-transform" />
             </button>
           </form>

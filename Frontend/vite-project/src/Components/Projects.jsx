@@ -1,56 +1,82 @@
-import { Code, Globe, ExternalLink, Download } from 'lucide-react';
-import { useState } from 'react';
+import { Code, Globe, Download } from "lucide-react";
+import { useState } from "react";
 
 const projects = [
   {
-    // https://d1axatwj9ytuu1.cloudfront.net/content/uploads/2019/06/12093307/seeAll.jpg
     title: "Virtual Classroom",
-    description: "An interactive online learning platform for live classes, assignments, resources, and personalized settings—making learning seamless and engaging!.",
-    image: "https://d1axatwj9ytuu1.cloudfront.net/content/uploads/2019/06/12093307/seeAll.jpg",
-    tags: ["JavaScript", "CSS", "React.js", "Firebase", "Tailwind CSS", "Responsive Design"],
-    github: "https://github.com/narasimhaDln/VirtualClassRoom/tree/main/vite-project",
+    description:
+      "An interactive online learning platform for live classes, assignments, resources, and personalized settings—making learning seamless and engaging!.",
+    image:
+      "https://d1axatwj9ytuu1.cloudfront.net/content/uploads/2019/06/12093307/seeAll.jpg",
+    tags: [
+      "JavaScript",
+      "CSS",
+      "React.js",
+      "Firebase",
+      "Tailwind CSS",
+      "Responsive Design",
+    ],
+    github:
+      "https://github.com/narasimhaDln/VirtualClassRoom/tree/main/vite-project",
     demo: "https://silly-bonbon-e1d209.netlify.app/login",
-    featured: true
+    featured: true,
   },
   {
-    title: "Tic Tac Toe",
-    description: "An interactive Tic Tac Toe game built with React. Features include real-time gameplay, intelligent move validation, score tracking, and a beautiful responsive interface.",
-    image: "https://images.unsplash.com/photo-1611996575749-79a3a250f948?auto=format&fit=crop&q=80&w=1000",
-    tags: ["React", "Hooks", "Game Logic", "HTML5", 'CSS3'],
-    github: "https://github.com/narasimhaDln/Portfulio/tree/main/Game/tic-tac-toe",
-    demo: "https://portfulio-pcu8.vercel.app/",
-    featured: true
-  }
+    title: "AuthNotify",
+    description:
+      "AuthNotify is a full-stack MERN authentication system featuring secure user signup, login, and password recovery flows with real-time email notifications. It includes email verification, route protection, and a polished frontend dashboard. The app mimics production-level auth workflows and is fully deployed with modern CI/CD practices.",
+    image:
+      "https://res.cloudinary.com/dbsg3chsc/image/upload/v1750656181/Screenshot_105_r4zhd5.png",
+    tags: [
+      "React",
+      "HTML5",
+      "CSS3",
+      "Node.js",
+      "Express.js",
+      "MongoDb",
+      "Zustand",
+      "Tailwind CSS",
+      "Render",
+    ],
+    github: "https://github.com/narasimhaDln/mernAuth",
+    demo: "https://67f2bdf8244950f73f9fe69a--gilded-pothos-3395d2.netlify.app/",
+    featured: true,
+  },
 ];
-
+// https://i.morioh.com/2023/06/20/cbd0f47d.webp
 const Projects = () => {
   const [isDownloading, setIsDownloading] = useState(false);
 
   const handleResumeDownload = async () => {
     setIsDownloading(true);
-    const resumeUrl = "https://drive.google.com/file/d/1mT9Cab8TYI61SvMiZXLMiFrW5DV6Mx2n/view?usp=sharing";
-    const downloadUrl = "https://drive.google.com/uc?export=download&id=1hb85DulAtcAr6DEXyRAVeDxqGe--Izba";
-    
+    const resumeUrl =
+      "https://drive.google.com/file/d/1mT9Cab8TYI61SvMiZXLMiFrW5DV6Mx2n/view?usp=sharing";
+    const downloadUrl =
+      "https://drive.google.com/uc?export=download&id=1hb85DulAtcAr6DEXyRAVeDxqGe--Izba";
+
     try {
       // Open resume in new tab
-      window.open(resumeUrl, '_blank');
-      
+      window.open(resumeUrl, "_blank");
+
       // Create a temporary link for download
-      const link = document.createElement('a');
+      const link = document.createElement("a");
       link.href = downloadUrl;
       link.download = "Devadurgam_Lakshmi_Narasimha_Resume.pdf";
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
     } catch (error) {
-      console.error('Download failed:', error);
+      console.error("Download failed:", error);
     } finally {
       setIsDownloading(false);
     }
   };
 
   return (
-    <section id="projects" className="py-20 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
+    <section
+      id="projects"
+      className="py-20 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900"
+    >
       <div className="max-w-6xl mx-auto px-4">
         {/* Header Section */}
         <div className="text-center mb-16">
@@ -59,24 +85,29 @@ const Projects = () => {
           </h2>
           <div className="w-20 h-1 bg-gradient-to-r from-blue-500 to-teal-500 mx-auto rounded-full mb-8"></div>
           <p className="text-slate-300 text-lg max-w-2xl mx-auto leading-relaxed mb-8">
-            Explore my latest work and personal projects. Each project represents my passion for creating 
-            meaningful and innovative solutions.
+            Explore my latest work and personal projects. Each project
+            represents my passion for creating meaningful and innovative
+            solutions.
           </p>
           <button
             onClick={handleResumeDownload}
             disabled={isDownloading}
-            className={`inline-flex items-center gap-2 bg-gradient-to-r from-blue-500 to-teal-500 text-white font-semibold py-3 px-8 rounded-lg hover:from-blue-600 hover:to-teal-600 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-blue-500/25 ${isDownloading ? 'opacity-75 cursor-wait' : ''}`}
+            className={`inline-flex items-center gap-2 bg-gradient-to-r from-blue-500 to-teal-500 text-white font-semibold py-3 px-8 rounded-lg hover:from-blue-600 hover:to-teal-600 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-blue-500/25 ${
+              isDownloading ? "opacity-75 cursor-wait" : ""
+            }`}
           >
-            <Download className={`w-5 h-5 ${isDownloading ? 'animate-bounce' : ''}`} />
-            {isDownloading ? 'Downloading...' : 'Download Resume'}
+            <Download
+              className={`w-5 h-5 ${isDownloading ? "animate-bounce" : ""}`}
+            />
+            {isDownloading ? "Downloading..." : "Download Resume"}
           </button>
         </div>
 
         {/* Projects Grid */}
         <div className="grid md:grid-cols-2 gap-8">
           {projects.map((project, index) => (
-            <div 
-              key={index} 
+            <div
+              key={index}
               className="group relative bg-slate-800/50 rounded-xl overflow-hidden border border-slate-700/50 hover:border-blue-500/50 transition-all duration-500 hover:shadow-2xl hover:shadow-blue-500/10"
             >
               {/* Image Container */}
