@@ -26,7 +26,7 @@ const Contact = () => {
       } else {
         toast.error("Message Failed");
       }
-    } catch (erorr) {
+    } catch (error) {
       console.log("Submit error", error);
       toast.error("SOmething went wrong");
     } finally {
