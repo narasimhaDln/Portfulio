@@ -1,4 +1,4 @@
-import { Github, Linkedin, Mail, Heart } from 'lucide-react';
+import { Github, Linkedin, Mail, Heart } from "lucide-react";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -10,9 +10,9 @@ const Footer = () => {
           <div className="text-center md:text-left space-y-2">
             <p className="text-slate-300 flex items-center justify-center md:justify-start">
               Built with{" "}
-              <Heart 
-                className="w-5 h-5 mx-2 text-red-500 animate-pulse" 
-                fill="currentColor" 
+              <Heart
+                className="w-5 h-5 mx-2 text-red-500 animate-pulse"
+                fill="currentColor"
               />{" "}
               by{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-teal-400 font-semibold ml-1">
@@ -35,7 +35,7 @@ const Footer = () => {
               <Github className="w-6 h-6" />
             </a>
             <a
-              href="https://www.linkedin.com/in/devadurgam-lakshmi-narasimha-485802241"
+              href="https://www.linkedin.com/in/devadurgam-l-n/"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="LinkedIn"
@@ -43,7 +43,7 @@ const Footer = () => {
             >
               <Linkedin className="w-6 h-6" />
             </a>
-            <a 
+            <a
               href="mailto:narasimha34327@gmail.com"
               aria-label="Email"
               className="text-slate-400 hover:text-teal-400 transform hover:scale-110 transition-all duration-300"

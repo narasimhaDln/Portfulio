@@ -50,7 +50,7 @@ const Projects = () => {
   const handleResumeDownload = async () => {
     setIsDownloading(true);
     const resumeUrl =
-      "https://drive.google.com/file/d/1mT9Cab8TYI61SvMiZXLMiFrW5DV6Mx2n/view?usp=sharing";
+      "https://drive.google.com/file/d/1HN_9Ld4wSpMPwZGIh3WqTfrHedYHAt75/view?usp=sharing";
     const downloadUrl =
       "https://drive.google.com/uc?export=download&id=1hb85DulAtcAr6DEXyRAVeDxqGe--Izba";
 
