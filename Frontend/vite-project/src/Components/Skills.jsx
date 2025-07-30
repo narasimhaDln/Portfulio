@@ -64,6 +64,12 @@ const Skills = () => {
       description: "Skilled in NoSQL database design, CRUD operations, aggregation pipelines, and data modeling. Experience with MongoDB Atlas and performance optimization.",
       color: "from-green-500 to-green-700"
     },
+    {
+      src: "https://tse3.mm.bing.net/th/id/OIP.ExZVs3L0ArLkpNcXKNi30QAAAA?pid=Api&P=0&h=180",
+      name: "Ant Design",
+      description: "Skilled in building responsive UI with Ant Design components, theming, layout customization, and form handling. Experience in integrating Ant Design with React for fast and scalable front-end development.",
+      color: "from-green-500 to-green-700"
+    },
     // {
     //   src: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Typescript_logo_2020.svg/2048px-Typescript_logo_2020.svg.png",
     //   name: "TypeScript",
