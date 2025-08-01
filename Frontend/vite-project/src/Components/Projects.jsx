@@ -1,58 +1,57 @@
-
-import { useState, useEffect } from "react";
-import { Code, Globe, Download } from "lucide-react";
+import { useState, useEffect } from 'react';
+import { Code, Globe, Download } from 'lucide-react';
 
 const projects = [
   {
-    title: "Virtual Classroom",
+    title: 'Virtual Classroom',
     description:
-      "An interactive online learning platform for live classes, assignments, resources, and personalized settings—making learning seamless and engaging!.",
+      'An interactive online learning platform for live classes, assignments, resources, and personalized settings—making learning seamless and engaging!.',
     image:
-      "https://d1axatwj9ytuu1.cloudfront.net/content/uploads/2019/06/12093307/seeAll.jpg",
+      'https://d1axatwj9ytuu1.cloudfront.net/content/uploads/2019/06/12093307/seeAll.jpg',
     tags: [
-      "JavaScript",
-      "CSS",
-      "React.js",
-      "Firebase",
-      "Tailwind CSS",
-      "Responsive Design",
+      'JavaScript',
+      'CSS',
+      'React.js',
+      'Firebase',
+      'Tailwind CSS',
+      'Responsive Design',
     ],
     github:
-      "https://github.com/narasimhaDln/VirtualClassRoom/tree/main/vite-project",
-    demo: "https://silly-bonbon-e1d209.netlify.app/login",
+      'https://github.com/narasimhaDln/VirtualClassRoom/tree/main/vite-project',
+    demo: 'https://silly-bonbon-e1d209.netlify.app/login',
     featured: true,
   },
   {
-    title: "AuthNotify",
+    title: 'AuthNotify',
     description:
-      "AuthNotify is a full-stack MERN authentication system featuring secure user signup, login, and password recovery flows with real-time email notifications. It includes email verification, route protection, and a polished frontend dashboard. The app mimics production-level auth workflows and is fully deployed with modern CI/CD practices.",
+      'AuthNotify is a full-stack MERN authentication system featuring secure user signup, login, and password recovery flows with real-time email notifications. It includes email verification, route protection, and a polished frontend dashboard. The app mimics production-level auth workflows and is fully deployed with modern CI/CD practices.',
     image:
-      "https://res.cloudinary.com/dbsg3chsc/image/upload/v1750656181/Screenshot_105_r4zhd5.png",
+      'https://res.cloudinary.com/dbsg3chsc/image/upload/v1750656181/Screenshot_105_r4zhd5.png',
     tags: [
-      "React",
-      "HTML5",
-      "CSS3",
-      "Node.js",
-      "Express.js",
-      "MongoDb",
-      "Zustand",
-      "Tailwind CSS",
-      "Render",
+      'React',
+      'HTML5',
+      'CSS3',
+      'Node.js',
+      'Express.js',
+      'MongoDb',
+      'Zustand',
+      'Tailwind CSS',
+      'Render',
     ],
-    github: "https://github.com/narasimhaDln/mernAuth",
-    demo: "https://mernauth-1-eicr.onrender.com/login",
+    github: 'https://github.com/narasimhaDln/mernAuth',
+    demo: 'https://mernauth-1-eicr.onrender.com/login',
     featured: true,
   },
   {
-    title: "AI Assistant",
+    title: 'AI Assistant',
     description:
-      "I have developed a smart assistant web application that interacts with users through voice, understands queries in multiple languages, and provides relevant spoken responses. It offers a smooth, real-time conversational experience with a focus on user-friendly design and accessibility, making interactions intuitive and engaging.",
+      'I have developed a smart assistant web application that interacts with users through voice, understands queries in multiple languages, and provides relevant spoken responses. It offers a smooth, real-time conversational experience with a focus on user-friendly design and accessibility, making interactions intuitive and engaging.',
     image:
-      "https://res.cloudinary.com/dbsg3chsc/image/upload/v1753881578/IMG_20250730_183134_mbtrsl.jpg",
-    tags: ["React", "HTML5", "CSS3", "Netlify", "Cloudinary", "GoogleFont"],
+      'https://res.cloudinary.com/dbsg3chsc/image/upload/v1753881578/IMG_20250730_183134_mbtrsl.jpg',
+    tags: ['React', 'HTML5', 'CSS3', 'Netlify', 'Cloudinary', 'GoogleFont'],
     github:
-      "https://github.com/narasimhaDln/VirtualClassRoom/tree/main/VS/vite-project",
-    demo: "https://spectacular-lolly-eb6dbe.netlify.app/",
+      'https://github.com/narasimhaDln/VirtualClassRoom/tree/main/VS/vite-project',
+    demo: 'https://spectacular-lolly-eb6dbe.netlify.app/',
     featured: true,
   },
 ];
@@ -63,21 +62,22 @@ const Projects = () => {
 
   const handleResumeDownload = async () => {
     setIsDownloading(true);
+    // https://drive.google.com/file/d/189g9UZjGCYF085_MXczi259TNAny84SV/view?usp=sharing
     const resumeUrl =
-      "https://drive.google.com/file/d/1HN_9Ld4wSpMPwZGIh3WqTfrHedYHAt75/view?usp=sharing";
+      'https://drive.google.com/file/d/189g9UZjGCYF085_MXczi259TNAny84SV/view?usp=sharing';
     const downloadUrl =
-      "https://drive.google.com/uc?export=download&id=1hb85DulAtcAr6DEXyRAVeDxqGe--Izba";
+      'https://drive.google.com/uc?export=download&id=1hb85DulAtcAr6DEXyRAVeDxqGe--Izba';
 
     try {
-      window.open(resumeUrl, "_blank");
-      const link = document.createElement("a");
+      window.open(resumeUrl, '_blank');
+      const link = document.createElement('a');
       link.href = downloadUrl;
-      link.download = "Devadurgam_Lakshmi_Narasimha_Resume.pdf";
+      link.download = 'Devadurgam_Lakshmi_Narasimha_Resume.pdf';
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
     } catch (error) {
-      console.error("Download failed:", error);
+      console.error('Download failed:', error);
     } finally {
       setIsDownloading(false);
     }
@@ -87,7 +87,7 @@ const Projects = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentProjectIndex((prevIndex) =>
-        prevIndex === projects.length - 1 ? 0 : prevIndex + 1
+        prevIndex === projects.length - 1 ? 0 : prevIndex + 1,
       );
     }, 3000);
 
@@ -107,20 +107,21 @@ const Projects = () => {
           </h2>
           <div className="w-20 h-1 bg-gradient-to-r from-blue-500 to-teal-500 mx-auto rounded-full mb-8"></div>
           <p className="text-slate-300 text-lg max-w-2xl mx-auto leading-relaxed mb-8">
-            Explore my latest work and personal projects. Each project represents
-            my passion for creating meaningful and innovative solutions.
+            Explore my latest work and personal projects. Each project
+            represents my passion for creating meaningful and innovative
+            solutions.
           </p>
           <button
             onClick={handleResumeDownload}
             disabled={isDownloading}
             className={`inline-flex items-center gap-2 bg-gradient-to-r from-blue-500 to-teal-500 text-white font-semibold py-3 px-8 rounded-lg hover:from-blue-600 hover:to-teal-600 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-blue-500/25 ${
-              isDownloading ? "opacity-75 cursor-wait" : ""
+              isDownloading ? 'opacity-75 cursor-wait' : ''
             }`}
           >
             <Download
-              className={`w-5 h-5 ${isDownloading ? "animate-bounce" : ""}`}
+              className={`w-5 h-5 ${isDownloading ? 'animate-bounce' : ''}`}
             />
-            {isDownloading ? "Downloading..." : "Download Resume"}
+            {isDownloading ? 'Downloading...' : 'Download Resume'}
           </button>
         </div>
 
@@ -198,8 +199,8 @@ const Projects = () => {
                 key={index}
                 className={`w-3 h-3 rounded-full transition-all duration-300 ${
                   currentProjectIndex === index
-                    ? "bg-blue-500 scale-125"
-                    : "bg-slate-600"
+                    ? 'bg-blue-500 scale-125'
+                    : 'bg-slate-600'
                 }`}
                 onClick={() => setCurrentProjectIndex(index)}
               ></button>
