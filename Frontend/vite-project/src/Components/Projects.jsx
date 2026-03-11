@@ -1,212 +1,133 @@
-import { useState, useEffect } from 'react';
-import { Code, Globe, Download } from 'lucide-react';
+import { Code, Globe, ExternalLink } from 'lucide-react';
 
 const projects = [
   {
     title: 'Virtual Classroom',
     description:
-      'An interactive online learning platform for live classes, assignments, resources, and personalized settings—making learning seamless and engaging!.',
-    image:
-      'https://d1axatwj9ytuu1.cloudfront.net/content/uploads/2019/06/12093307/seeAll.jpg',
-    tags: [
-      'JavaScript',
-      'CSS',
-      'React.js',
-      'Firebase',
-      'Tailwind CSS',
-      'Responsive Design',
-    ],
-    github:
-      'https://github.com/narasimhaDln/VirtualClassRoom/tree/main/vite-project',
+      'An interactive online learning platform for live classes, assignments, resources, and personalized settings—making learning seamless and engaging!',
+    image: 'https://d1axatwj9ytuu1.cloudfront.net/content/uploads/2019/06/12093307/seeAll.jpg',
+    tags: ['React.js', 'JavaScript', 'Firebase', 'Tailwind CSS'],
+    github: 'https://github.com/narasimhaDln/VirtualClassRoom/tree/main/vite-project',
     demo: 'https://silly-bonbon-e1d209.netlify.app/login',
-    featured: true,
   },
   {
     title: 'AuthNotify',
     description:
-      'AuthNotify is a full-stack MERN authentication system featuring secure user signup, login, and password recovery flows with real-time email notifications. It includes email verification, route protection, and a polished frontend dashboard. The app mimics production-level auth workflows and is fully deployed with modern CI/CD practices.',
-    image:
-      'https://res.cloudinary.com/dbsg3chsc/image/upload/v1750656181/Screenshot_105_r4zhd5.png',
-    tags: [
-      'React',
-      'HTML5',
-      'CSS3',
-      'Node.js',
-      'Express.js',
-      'MongoDb',
-      'Zustand',
-      'Tailwind CSS',
-      'Render',
-    ],
+      'AuthNotify is a full-stack MERN authentication system featuring secure user signup, login, and password recovery flows with real-time email notifications.',
+    image: 'https://res.cloudinary.com/dbsg3chsc/image/upload/v1750656181/Screenshot_105_r4zhd5.png',
+    tags: ['Node.js', 'Express.js', 'MongoDB', 'Zustand', 'Tailwind'],
     github: 'https://github.com/narasimhaDln/mernAuth',
     demo: 'https://mernauth-1-eicr.onrender.com/login',
-    featured: true,
   },
+  
   {
     title: 'AI Assistant',
     description:
-      'I have developed a smart assistant web application that interacts with users through voice, understands queries in multiple languages, and provides relevant spoken responses. It offers a smooth, real-time conversational experience with a focus on user-friendly design and accessibility, making interactions intuitive and engaging.',
-    image:
-      'https://res.cloudinary.com/dbsg3chsc/image/upload/v1753881578/IMG_20250730_183134_mbtrsl.jpg',
-    tags: ['React', 'HTML5', 'CSS3', 'Netlify', 'Cloudinary', 'GoogleFont'],
-    github:
-      'https://github.com/narasimhaDln/VirtualClassRoom/tree/main/VS/vite-project',
+      'A smart assistant web application that interacts with users through voice, understands queries in multiple languages, and provides relevant spoken responses.',
+    image: 'https://res.cloudinary.com/dbsg3chsc/image/upload/v1753881578/IMG_20250730_183134_mbtrsl.jpg',
+    tags: ['React', 'CSS3', 'Netlify', 'Cloudinary'],
+    github: 'https://github.com/narasimhaDln/VirtualClassRoom/tree/main/VS/vite-project',
     demo: 'https://spectacular-lolly-eb6dbe.netlify.app/',
-    featured: true,
   },
+ {
+   title:"MSCureChain",
+  description:"Built a multi-tenant Hospital Management System enabling multiple hospitals to operate independently within a single platform using tenant-based data isolation. Implemented role-based access control (RBAC) with JWT authentication supporting various roles. Developed core healthcare workflows, designed tenant-aware backend architecture, and integrated real-time operational flow between departments.",
+  tags:['Next.js','TypeScript','Node.js','Express.js','MongoDB','Tailwind CSS','JWT','Zustand','Git','Docker','Aws'],
+  image:"https://res.cloudinary.com/dbsg3chsc/image/upload/v1773229844/hospital-management-software-development_echxzo.webp",
+  demo:"https://www.mscurechain.com/"
+ },
+  {
+   title:"MS Billing Softwares",
+  description:"Developed 7 customized billing management systems for industries including retail, food service, electronics, and laboratories using the MERN stack and Next.js. Implemented modules for automated billing, product & inventory management, invoice generation, and role-based access. Built sales analytics dashboards and reporting features to track performance in real time.",
+  tags:['Node.js','Express.js','MongoDB','Tailwind CSS','JWT','Git','React.js',"HTML 5","Next.js"],
+  image:"https://res.cloudinary.com/dbsg3chsc/image/upload/v1773229727/billing_software_xceaxg.webp",
+  demo:"https://billing-landing-page.vercel.app/"
+ },
+ {
+   title:"SujanaGold",
+  description:"Developed a full-stack jewellery billing and inventory management system using the MERN stack and Next.js. Implemented features including gold invoice generation with automatic weight-based calculations, inventory tracking, purchase management, and old-gold exchange handling. Built sales reporting modules to provide real-time business insights.",
+  tags:['Node.js','Express.js','MongoDB','Tailwind CSS','JWT','Git','React.js','HTML 5','Next.js'],
+  image:"https://res.cloudinary.com/dbsg3chsc/image/upload/v1773229679/gold_shop_z42us3.jpg",
+  demo:"https://billing-landing-page.vercel.app/"
+ },
 ];
 
 const Projects = () => {
-  const [currentProjectIndex, setCurrentProjectIndex] = useState(0);
-  const [isDownloading, setIsDownloading] = useState(false);
-
-  const handleResumeDownload = async () => {
-    setIsDownloading(true);
-    // https://drive.google.com/file/d/189g9UZjGCYF085_MXczi259TNAny84SV/view?usp=sharing
-    const resumeUrl =
-      'https://drive.google.com/file/d/189g9UZjGCYF085_MXczi259TNAny84SV/view?usp=sharing';
-    const downloadUrl =
-      'https://drive.google.com/uc?export=download&id=1hb85DulAtcAr6DEXyRAVeDxqGe--Izba';
-
-    try {
-      window.open(resumeUrl, '_blank');
-      const link = document.createElement('a');
-      link.href = downloadUrl;
-      link.download = 'Devadurgam_Lakshmi_Narasimha_Resume.pdf';
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-    } catch (error) {
-      console.error('Download failed:', error);
-    } finally {
-      setIsDownloading(false);
-    }
-  };
-
-  // Auto-cycle through projects every 3 seconds
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentProjectIndex((prevIndex) =>
-        prevIndex === projects.length - 1 ? 0 : prevIndex + 1,
-      );
-    }, 3000);
-
-    return () => clearInterval(interval);
-  }, [projects.length]);
-
   return (
-    <section
-      id="projects"
-      className="py-20 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900"
-    >
-      <div className="max-w-6xl mx-auto px-4">
-        {/* Header Section */}
-        <div className="text-center mb-16 animate-fade-in">
-          <h2 className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-teal-400 inline-block mb-4">
-            My Projects
-          </h2>
-          <div className="w-20 h-1 bg-gradient-to-r from-blue-500 to-teal-500 mx-auto rounded-full mb-8"></div>
-          <p className="text-slate-300 text-lg max-w-2xl mx-auto leading-relaxed mb-8">
-            Explore my latest work and personal projects. Each project
-            represents my passion for creating meaningful and innovative
-            solutions.
+    <section id="projects" className="py-12 md:py-16 flex flex-col scroll-mt-24">
+      <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+        <div>
+          <h2 className="text-3xl md:text-4xl font-bold text-zinc-100 tracking-tight mb-4">Featured <span className="text-blue-400">Projects</span></h2>
+          <div className="w-16 h-1 bg-gradient-to-r from-blue-500 to-cyan-400 rounded-full opacity-80 mb-6"></div>
+          <p className="text-zinc-400 max-w-2xl leading-relaxed text-lg">
+            A selection of recent projects that highlight my focus on scalable architecture and clean code.
           </p>
-          <button
-            onClick={handleResumeDownload}
-            disabled={isDownloading}
-            className={`inline-flex items-center gap-2 bg-gradient-to-r from-blue-500 to-teal-500 text-white font-semibold py-3 px-8 rounded-lg hover:from-blue-600 hover:to-teal-600 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-blue-500/25 ${
-              isDownloading ? 'opacity-75 cursor-wait' : ''
-            }`}
-          >
-            <Download
-              className={`w-5 h-5 ${isDownloading ? 'animate-bounce' : ''}`}
-            />
-            {isDownloading ? 'Downloading...' : 'Download Resume'}
-          </button>
         </div>
+      </div>
 
-        {/* Carousel */}
-        <div className="relative overflow-hidden">
-          <div
-            className="flex transition-transform duration-700 ease-in-out"
-            style={{ transform: `translateX(-${currentProjectIndex * 100}%)` }}
+      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+        {projects.map((project, index) => (
+          <div 
+            key={index} 
+            className="group flex flex-col bg-zinc-900 border border-zinc-800 rounded-2xl overflow-hidden hover:border-zinc-700 transition-colors"
           >
-            {projects.map((project, index) => (
-              <div key={index} className="min-w-full flex justify-center">
-                <div className="group relative bg-slate-800/50 rounded-xl overflow-hidden border border-slate-700/50 hover:border-blue-500/50 transition-all duration-500 hover:shadow-2xl hover:shadow-blue-500/10 w-full max-w-2xl">
-                  {/* Image Container */}
-                  <div className="relative aspect-video overflow-hidden">
-                    <img
-                      src={project.image}
-                      alt={project.title}
-                      className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/50 to-transparent opacity-60 group-hover:opacity-40 transition-opacity duration-700"></div>
-                  </div>
+            {/* Image */}
+            <div className="relative aspect-[16/10] overflow-hidden bg-zinc-800">
+              <img
+                src={project.image}
+                alt={project.title}
+                className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
+              />
+            </div>
 
-                  {/* Content */}
-                  <div className="p-6 space-y-4">
-                    <h3 className="text-2xl font-bold text-white group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-blue-400 group-hover:to-teal-400 transition-all duration-300">
-                      {project.title}
-                    </h3>
-                    <p className="text-slate-300 leading-relaxed">
-                      {project.description}
-                    </p>
+            {/* Content */}
+            <div className="flex flex-col flex-grow p-6 sm:p-8">
+              <h3 className="text-xl font-bold text-zinc-100 mb-3">{project.title}</h3>
+              <p className="text-zinc-400 text-sm leading-relaxed mb-6 flex-grow">
+                {project.description}
+              </p>
 
-                    {/* Tags */}
-                    <div className="flex flex-wrap gap-2">
-                      {project.tags.map((tag, tagIndex) => (
-                        <span
-                          key={tagIndex}
-                          className="px-3 py-1 text-sm font-medium text-blue-400 bg-blue-400/10 rounded-full"
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-
-                    {/* Links */}
-                    <div className="flex gap-4 pt-4">
-                      <a
-                        href={project.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center gap-2 text-slate-300 hover:text-white bg-slate-700/50 hover:bg-slate-700 px-4 py-2 rounded-lg transition-all duration-300"
-                      >
-                        <Code className="w-4 h-4" />
-                        GitHub
-                      </a>
-                      <a
-                        href={project.demo}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center gap-2 text-white bg-gradient-to-r from-blue-500 to-teal-500 hover:from-blue-600 hover:to-teal-600 px-4 py-2 rounded-lg transition-all duration-300"
-                      >
-                        <Globe className="w-4 h-4" />
-                        Live Demo
-                      </a>
-                    </div>
-                  </div>
-                </div>
+              {/* Tags */}
+              <div className="flex flex-wrap gap-2 mb-8">
+                {project.tags.map((tag, tagIndex) => (
+                  <span
+                    key={tagIndex}
+                    className="px-3 py-1 text-xs font-medium text-blue-300 bg-blue-500/10 rounded-full"
+                  >
+                    {tag}
+                  </span>
+                ))}
               </div>
-            ))}
-          </div>
 
-          {/* Navigation Dots */}
-          <div className="flex justify-center mt-6 space-x-2">
-            {projects.map((_, index) => (
-              <button
-                key={index}
-                className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                  currentProjectIndex === index
-                    ? 'bg-blue-500 scale-125'
-                    : 'bg-slate-600'
-                }`}
-                onClick={() => setCurrentProjectIndex(index)}
-              ></button>
-            ))}
+              {/* Links */}
+              <div className="flex gap-4 mt-auto pt-4">
+                <a
+                  href={project.demo}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group relative flex-1 inline-flex items-center justify-center gap-2 px-4 py-3 bg-gradient-to-r from-blue-600 to-cyan-500 text-white rounded-full font-bold transition-all duration-300 transform hover:-translate-y-1 hover:shadow-[0_0_15px_rgba(59,130,246,0.5)] overflow-hidden text-sm"
+                >
+                  <span className="absolute inset-0 w-full h-full -mt-1 rounded-lg opacity-30 bg-gradient-to-b from-transparent via-transparent to-black"></span>
+                  <span className="relative z-10 flex items-center gap-2">
+                    <Globe className="w-4 h-4 group-hover:rotate-12 transition-transform" />
+                    Live Preview
+                  </span>
+                </a>
+                <a
+                  href={project.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group relative flex-1 inline-flex items-center justify-center gap-2 px-4 py-3 bg-transparent border-2 border-zinc-600 hover:border-blue-400 text-zinc-300 hover:text-white rounded-full font-bold transition-all duration-300 transform hover:-translate-y-1 hover:bg-zinc-800/50 text-sm"
+                >
+                  <span className="relative z-10 flex items-center gap-2">
+                    <Code className="w-4 h-4 text-zinc-400 group-hover:text-blue-300 transition-colors" />
+                    Code
+                  </span>
+                </a>
+              </div>
+            </div>
           </div>
-        </div>
+        ))}
       </div>
     </section>
   );

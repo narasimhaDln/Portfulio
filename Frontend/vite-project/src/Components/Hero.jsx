@@ -1,104 +1,134 @@
-import { ArrowDown, Code, Palette } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { ArrowRight, Terminal } from 'lucide-react';
+
+const backgroundImages = [
+  "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80",
+  "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&q=80",
+  "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&q=80"
+];
+
+const roles = [
+  "Full Stack Developer.",
+  "MERN Stack Expert.",
+  "Problem Solver.",
+  "Web Enthusiast."
+];
+
+const TypingEffect = () => {
+  const [currentRoleIndex, setCurrentRoleIndex] = useState(0);
+  const [currentText, setCurrentText] = useState("");
+  const [isDeleting, setIsDeleting] = useState(false);
+
+  useEffect(() => {
+    const typeSpeed = isDeleting ? 50 : 100;
+    const currentRole = roles[currentRoleIndex];
+
+    const timeout = setTimeout(() => {
+      if (!isDeleting && currentText === currentRole) {
+        setTimeout(() => setIsDeleting(true), 2000);
+      } else if (isDeleting && currentText === "") {
+        setIsDeleting(false);
+        setCurrentRoleIndex((prev) => (prev + 1) % roles.length);
+      } else {
+        const nextText = isDeleting 
+          ? currentRole.substring(0, currentText.length - 1)
+          : currentRole.substring(0, currentText.length + 1);
+        setCurrentText(nextText);
+      }
+    }, typeSpeed);
+
+    return () => clearTimeout(timeout);
+  }, [currentText, isDeleting, currentRoleIndex]);
+
+  return (
+    <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300">
+      {currentText}
+      <span className="inline-block w-[4px] h-[1em] bg-cyan-400 ml-1 animate-pulse align-middle -translate-y-[2px]"></span>
+    </span>
+  );
+};
 
 const Hero = () => {
+  const [bgIndex, setBgIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setBgIndex((prev) => (prev + 1) % backgroundImages.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
-    <section id="home" className="min-h-screen relative overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 flex items-center justify-center">
-      {/* Animated Background Elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        {/* Glowing orbs */}
-        <div 
-          className="absolute top-1/4 -left-20 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl animate-glow"
-        ></div>
-        <div 
-          className="absolute bottom-1/4 -right-20 w-96 h-96 bg-teal-500/20 rounded-full blur-3xl animate-glow animation-delay-2000"
-        ></div>
-        <div 
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[40rem] h-[40rem] bg-purple-500/10 rounded-full blur-3xl animate-glow animation-delay-4000"
-        ></div>
-
-        {/* Floating Tech Icons */}
-        <div className="absolute inset-0">
-          {[...Array(12)].map((_, i) => (
-            <div
-              key={i}
-              className="absolute animate-float-tech"
-              style={{
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
-                animationDelay: `${Math.random() * 8}s`,
-                animationDuration: `${15 + Math.random() * 15}s`,
-                opacity: 0.1,
-                fontSize: `${Math.random() * 20 + 20}px`
-              }}
-            >
-              {['⚛️', '🌐', '💻', '🔥', '⚡️', '🎨'][Math.floor(Math.random() * 6)]}
-            </div>
-          ))}
+    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      
+      {/* Animated Background Slider */}
+      {backgroundImages.map((img, index) => (
+        <div
+          key={img}
+          className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+            index === bgIndex ? 'opacity-100' : 'opacity-0'
+          }`}
+        >
+          {/* Overlay to ensure text readability */}
+          <div className="absolute inset-0 bg-zinc-950/80 z-10"></div>
+          <img
+            src={img}
+            alt="background"
+            className="w-full h-full object-cover scale-105"
+          />
         </div>
+      ))}
 
-        {/* Glowing Particles */}
-        <div className="absolute inset-0">
-          {[...Array(30)].map((_, i) => (
-            <div
-              key={i}
-              className="absolute rounded-full animate-glow-particle"
-              style={{
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
-                width: `${Math.random() * 3 + 1}px`,
-                height: `${Math.random() * 3 + 1}px`,
-                background: `rgba(${Math.random() * 155 + 100}, ${Math.random() * 155 + 100}, 255, 0.5)`,
-                animationDelay: `${Math.random() * 5}s`,
-                animationDuration: `${8 + Math.random() * 12}s`
-              }}
-            ></div>
-          ))}
-        </div>
-      </div>
-
-      <div className="relative z-10 max-w-6xl mx-auto px-4 py-20 text-center">
-        <div className="space-y-6 animate-fade-in-down backdrop-blur-sm bg-slate-900/30 p-8 rounded-2xl shadow-2xl">
-          <span className="inline-block text-blue-400 text-lg md:text-xl font-medium tracking-wide mb-2 animate-pulse">
-            Hi, I'm
+      {/* Hero Content */}
+      <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center pt-20">
+        
+        {/* Availability Badge */}
+        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-blue-500/30 bg-blue-500/10 mb-8 backdrop-blur-sm animate-fade-in-down">
+          <span className="relative flex h-2 w-2">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
+            <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
           </span>
-          
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold">
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-teal-400 to-purple-400 animate-gradient">
-              Devadurgam Lakshmi Narasimha
-            </span>
-          </h1>
-
-          <div className="relative">
-            <p className="text-xl md:text-2xl text-slate-300 font-medium mt-4 flex items-center justify-center gap-3">
-              <Code className="w-6 h-6 text-blue-400 animate-bounce-slow" />
-              Full Stack Web Developer
-              <span className="text-blue-400 animate-pulse">&</span>
-              Design Thinker
-              <Palette className="w-6 h-6 text-teal-400 animate-bounce-slow animation-delay-200" />
-            </p>
-          </div>
-
-          {/* CTA Button */}
-          <div className="mt-12">
-            <a
-              href="#about"
-              className="group inline-flex items-center gap-2 bg-gradient-to-r from-blue-500 to-teal-500 text-white font-semibold py-3 px-8 rounded-full hover:from-blue-600 hover:to-teal-600 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-blue-500/25"
-            >
-              Explore My Work
-              <ArrowDown className="w-5 h-5 group-hover:animate-bounce" />
-            </a>
-          </div>
+          <span className="text-sm font-medium text-blue-300 tracking-wide uppercase">Available for Hire</span>
         </div>
-      </div>
 
-      {/* Animated Circles */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-3">
-        <div className="w-2 h-2 rounded-full bg-blue-400 animate-ping"></div>
-        <div className="w-2 h-2 rounded-full bg-teal-400 animate-ping delay-100"></div>
-        <div className="w-2 h-2 rounded-full bg-purple-400 animate-ping delay-200"></div>
+        {/* Headlines */}
+        <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight text-white mb-6">
+          <span className="block mb-4 text-zinc-100">Hi, I'm D.Lakshmi Narasimha</span>
+          <div className="h-[1.2em] flex items-center justify-center">
+            <TypingEffect />
+          </div>
+        </h1>
+
+        <p className="text-xl md:text-2xl text-zinc-300 max-w-2xl mx-auto font-light leading-relaxed mb-10 animate-fade-in-up" style={{ animationDelay: '200ms' }}>
+          Crafting premium, interactive, and highly optimized scalable web experiences.
+        </p>
+
+        {/* Action Buttons */}
+        <div className="flex flex-col sm:flex-row gap-4 justify-center mt-4">
+          <a
+            href="#projects"
+            className="group relative inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-600 to-cyan-500 text-white rounded-full font-bold transition-all duration-300 transform hover:-translate-y-1 hover:shadow-[0_0_20px_rgba(59,130,246,0.5)] overflow-hidden"
+          >
+            <span className="absolute inset-0 w-full h-full -mt-1 rounded-lg opacity-30 bg-gradient-to-b from-transparent via-transparent to-black"></span>
+            <span className="relative z-10 flex items-center gap-2 text-sm sm:text-base">
+              Explore My Work
+              <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
+            </span>
+          </a>
+          <a
+            href="#contact"
+            className="group relative inline-flex items-center gap-2 px-6 py-3 bg-transparent border-2 border-zinc-500 hover:border-blue-400 text-white rounded-full font-bold transition-all duration-300 transform hover:-translate-y-1 hover:bg-zinc-800/50"
+          >
+            <span className="relative z-10 flex items-center gap-2 text-sm sm:text-base">
+              <Terminal className="w-4 h-4 sm:w-5 sm:h-5 text-blue-400 group-hover:text-blue-300 transition-colors" />
+              Contact Me
+            </span>
+          </a>
+        </div>
+
       </div>
     </section>
   );
-}
+};
 
 export default Hero;

@@ -1,13 +1,14 @@
-import { Send, Mail, ArrowRight } from "lucide-react";
+import { Send, Mail, MapPin } from "lucide-react";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import axios from "axios";
-const API_URL =
-  import.meta.env.MODE === "development" ? "http://localhost:4000" : "";
 
+const API_URL = import.meta.env.MODE === "development" ? "http://localhost:5001" : import.meta.env.VITE_API_URL || "";
 axios.defaults.withCredentials = true;
+
 const Contact = () => {
   const [isLoading, setIsLoading] = useState(false);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
@@ -33,107 +34,115 @@ const Contact = () => {
       }
     } catch (error) {
       console.log("Submit error", error);
-      toast.error("SOmething went wrong");
+      toast.error("Something went wrong");
     } finally {
       setIsLoading(false);
     }
   };
+
   return (
-    <section
-      id="contact"
-      className="py-20 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900"
-    >
-      <div className="max-w-4xl mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-teal-400 inline-block mb-4">
-            Get In Touch
-          </h2>
-          <div className="w-20 h-1 bg-gradient-to-r from-blue-500 to-teal-500 mx-auto rounded-full mb-8"></div>
-          <p className="text-slate-300 text-lg max-w-2xl mx-auto leading-relaxed">
-            Looking for freelance or full-time opportunities. Reach out, and let's work on something great!
-            <span className="inline-flex items-center ml-2 text-blue-400 hover:text-blue-300 transition-colors">
-              <ArrowRight className="w-5 h-5 ml-1" />
-            </span>
-          </p>
-        </div>
-
-        <div className="bg-slate-800/50 rounded-2xl p-8 backdrop-blur-sm shadow-xl border border-slate-700/50">
-          <form
-            className="space-y-6"
-            action="https://formsubmit.co/narasimha34327@gmail.com"
-            method="POST"
-            onSubmit={handleSubmit}
-          >
-            <div className="space-y-2">
-              <label
-                htmlFor="name"
-                className="block text-slate-300 font-medium"
-              >
-                Name
-              </label>
-              <input
-                type="text"
-                id="name"
-                name="name"
-                placeholder="Enter your name"
-                required
-                className="w-full px-4 py-3 rounded-lg bg-slate-900/50 border border-slate-700 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
-              />
+    <section id="contact" className="py-12 md:py-16 border-t border-zinc-800 scroll-mt-24">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-8 items-center">
+          
+          {/* Left Side Content */}
+          <div className="flex flex-col space-y-8 lg:pr-10">
+            <div>
+              <h2 className="text-4xl md:text-5xl font-bold text-zinc-100 tracking-tight mb-4">
+                Let's <span className="text-blue-400">Collaborate</span>
+              </h2>
+              <div className="w-16 h-1 bg-gradient-to-r from-blue-500 to-cyan-400 rounded-full opacity-80 mb-6"></div>
+              <p className="text-zinc-400 leading-relaxed text-lg pb-2">
+                I'm currently open for new opportunities. Whether you have a question, a project idea, or just want to say hi, I'll try my best to get back to you!
+              </p>
             </div>
 
-            <div className="space-y-2">
-              <label
-                htmlFor="email"
-                className="block text-slate-300 font-medium"
-              >
-                Email
-              </label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                placeholder="Enter your email"
-                required
-                className="w-full px-4 py-3 rounded-lg bg-slate-900/50 border border-slate-700 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
-              />
+            <div className="flex flex-col gap-6">
+              <a href="mailto:narasimha34327@gmail.com" className="flex items-center gap-4 text-zinc-400 hover:text-blue-400 transition-colors group">
+                <div className="w-12 h-12 bg-zinc-900 border border-zinc-800 rounded-full flex items-center justify-center group-hover:bg-blue-500/10 group-hover:border-blue-500/30 transition-all">
+                  <Mail className="w-5 h-5 group-hover:scale-110 transition-transform text-zinc-300 group-hover:text-blue-400" />
+                </div>
+                <div>
+                  <p className="text-sm font-medium text-zinc-500">Drop an Email</p>
+                  <p className="font-semibold text-zinc-200">narasimha34327@gmail.com</p>
+                </div>
+              </a>
+              
+              <div className="flex items-center gap-4 text-zinc-400 group">
+                <div className="w-12 h-12 bg-zinc-900 border border-zinc-800 rounded-full flex items-center justify-center">
+                  <MapPin className="w-5 h-5 text-zinc-300" />
+                </div>
+                <div>
+                  <p className="text-sm font-medium text-zinc-500">Location</p>
+                  <p className="font-semibold text-zinc-200">Available globally / Relocation</p>
+                </div>
+              </div>
             </div>
+          </div>
 
-            <div className="space-y-2">
-              <label
-                htmlFor="message"
-                className="block text-slate-300 font-medium"
+          {/* Right Side Form */}
+          <div className="w-full max-w-lg mx-auto lg:ml-auto lg:mr-0">
+            <div className="bg-[#18181b] border border-white/5 shadow-2xl rounded-2xl p-6 sm:p-8">
+              <form
+                className="flex flex-col gap-5"
+                action="https://formsubmit.co/narasimha34327@gmail.com"
+                method="POST"
+                onSubmit={handleSubmit}
               >
-                Message
-              </label>
-              <textarea
-                id="message"
-                name="message"
-                rows={5}
-                placeholder="Write your message here..."
-                required
-                className="w-full px-4 py-3 rounded-lg bg-slate-900/50 border border-slate-700 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 resize-none"
-              ></textarea>
+                <div className="space-y-1.5">
+                  <label htmlFor="name" className="block text-sm font-medium text-zinc-400">Name</label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    placeholder="John Doe"
+                    required
+                    className="w-full px-4 py-3 rounded-xl bg-[#09090b] border border-white/5 text-zinc-100 placeholder-zinc-600 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all font-medium"
+                  />
+                </div>
+
+                <div className="space-y-1.5">
+                  <label htmlFor="email" className="block text-sm font-medium text-zinc-400">Email</label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="john@example.com"
+                    required
+                    className="w-full px-4 py-3 rounded-xl bg-[#09090b] border border-white/5 text-zinc-100 placeholder-zinc-600 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all font-medium"
+                  />
+                </div>
+
+                <div className="space-y-1.5">
+                  <label htmlFor="message" className="block text-sm font-medium text-zinc-400">Message</label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    rows={4}
+                    placeholder="Tell me about your project..."
+                    required
+                    className="w-full px-4 py-3 rounded-xl bg-[#09090b] border border-white/5 text-zinc-100 placeholder-zinc-600 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all resize-none font-medium"
+                  ></textarea>
+                </div>
+
+                <div className="pt-2">
+                  <button
+                    type="submit"
+                    disabled={isLoading}
+                    className="group w-full bg-gradient-to-r from-blue-600 to-cyan-500 text-white font-bold py-3.5 px-8 rounded-xl flex items-center justify-center transition-all duration-300 shadow-[0_0_15px_rgba(59,130,246,0.2)] hover:shadow-[0_0_20px_rgba(59,130,246,0.4)] disabled:opacity-70 disabled:cursor-not-allowed transform hover:-translate-y-1 overflow-hidden relative"
+                  >
+                    <span className="absolute inset-0 w-full h-full -mt-1 rounded-lg opacity-30 bg-gradient-to-b from-transparent via-transparent to-black"></span>
+                    <span className="relative z-10 flex items-center justify-center w-full">
+                      {isLoading ? "Sending..." : "Send Message"}
+                      <Send className={`w-4 h-4 ml-2 transition-transform duration-300 ${isLoading ? 'animate-bounce' : 'group-hover:-translate-y-1 group-hover:translate-x-1'}`} />
+                    </span>
+                  </button>
+                </div>
+              </form>
             </div>
-
-            <button
-              type="submit"
-              disabled={isLoading}
-              className="w-full bg-gradient-to-r from-blue-500 to-teal-500 text-white font-semibold py-4 px-8 rounded-lg hover:from-blue-600 hover:to-teal-600 transform hover:scale-[1.02] transition-all duration-300 flex items-center justify-center group"
-            >
-              <span>{isLoading ? "Sending..." : "Send Message"}</span>
-              <Send className="w-5 h-5 ml-2 transform group-hover:translate-x-1 transition-transform" />
-            </button>
-          </form>
-        </div>
-
-        <div className="mt-12 text-center">
-          <a
-            href="mailto:narasimha34327@gmail.com"
-            className="inline-flex items-center text-slate-300 hover:text-blue-400 transition-colors"
-          >
-            <Mail className="w-5 h-5 mr-2" />
-            <span>narasimha34327@gmail.com</span>
-          </a>
+          </div>
+          
         </div>
       </div>
     </section>

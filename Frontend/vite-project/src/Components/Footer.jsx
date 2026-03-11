@@ -4,22 +4,17 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-slate-900 border-t border-slate-800">
-      <div className="max-w-6xl mx-auto px-4 py-12">
-        <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+    <footer className="border-t border-zinc-800 py-12 text-zinc-400">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0">
           <div className="text-center md:text-left space-y-2">
-            <p className="text-slate-300 flex items-center justify-center md:justify-start">
-              Built with{" "}
-              <Heart
-                className="w-5 h-5 mx-2 text-red-500 animate-pulse"
-                fill="currentColor"
-              />{" "}
-              by{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-teal-400 font-semibold ml-1">
-                Devadurgam Lakshmi Narasimha
+            <p className="flex items-center justify-center md:justify-start">
+              Crafted with <Heart className="w-4 h-4 mx-2 text-rose-500 animate-pulse" fill="currentColor" /> by
+              <span className="text-zinc-100 font-semibold ml-1 hover:text-blue-400 transition-colors">
+                D.Lakshmi Narasimha
               </span>
             </p>
-            <p className="text-slate-400 text-sm">
+            <p className="text-sm">
               &copy; {currentYear} All rights reserved.
             </p>
           </div>
@@ -30,25 +25,25 @@ const Footer = () => {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="GitHub"
-              className="text-slate-400 hover:text-white transform hover:scale-110 transition-all duration-300"
+              className="text-zinc-500 hover:text-zinc-100 transition-colors"
             >
-              <Github className="w-6 h-6" />
+              <Github className="w-5 h-5" />
             </a>
             <a
               href="https://www.linkedin.com/in/devadurgam-l-n/"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="LinkedIn"
-              className="text-slate-400 hover:text-blue-400 transform hover:scale-110 transition-all duration-300"
+              className="text-zinc-500 hover:text-blue-400 transition-colors"
             >
-              <Linkedin className="w-6 h-6" />
+              <Linkedin className="w-5 h-5" />
             </a>
             <a
               href="mailto:narasimha34327@gmail.com"
               aria-label="Email"
-              className="text-slate-400 hover:text-teal-400 transform hover:scale-110 transition-all duration-300"
+              className="text-zinc-500 hover:text-cyan-400 transition-colors"
             >
-              <Mail className="w-6 h-6" />
+              <Mail className="w-5 h-5" />
             </a>
           </div>
         </div>
