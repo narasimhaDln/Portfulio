@@ -27,8 +27,12 @@ app.use(
   })
 );
 
-// Health check route
+// Health check routes
 app.get("/", (req, res) => {
+  res.status(200).json({ status: "OK", message: "Server is running", timestamp: new Date() });
+});
+
+app.get("/health", (req, res) => {
   res.status(200).json({ status: "OK", timestamp: new Date() });
 });
 
