@@ -4,7 +4,7 @@ const experiences = [
   {
     role: "Software Developer",
     company: "MS TECH HIVE",
-    duration: "11/2025 - Present",
+    duration: "Nov/2024 - Present",
     description: "Developed and maintained multiple scalable web applications using the MERN stack and Next.js, including complex hospital and billing management systems.",
     highlights: [
       "MSCureChain: Built a multi-tenant Hospital Management System with tenant-based data isolation and RBAC using JWT.",
@@ -18,7 +18,7 @@ const experiences = [
   {
     role: "Full Stack Developer",
     company: "DEZIGN SHARKS",
-    duration: "08/2025 - 11/2025",
+    duration: "Nov/2023 - Oct/2024",
     description: "Worked on building web applications and gained hands-on experience mainly in digital marketing websites.",
     highlights: [
       "Built dynamic, responsive front-end interfaces for digital marketing websites.",
@@ -36,7 +36,7 @@ const Experience = () => {
         </h2>
         <div className="w-16 h-1 bg-gradient-to-r from-blue-500 to-cyan-400 rounded-full opacity-80 mb-6"></div>
         <p className="text-zinc-400 max-w-2xl leading-relaxed text-lg">
-          My professional journey and the roles where I've grown as a developer over the past 2+ years.
+          My professional journey and the roles where I&apos;ve grown as a developer over the past 2+ years.
         </p>
       </div>
 

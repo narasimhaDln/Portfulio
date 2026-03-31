@@ -7,8 +7,8 @@ const About = () => {
 
   const handleResumeDownload = async () => {
     setIsDownloading(true);
-    const resumeUrl = 'https://drive.google.com/file/d/189g9UZjGCYF085_MXczi259TNAny84SV/view?usp=sharing';
-    const downloadUrl = 'https://drive.google.com/uc?export=download&id=1hb85DulAtcAr6DEXyRAVeDxqGe--Izba';
+    const resumeUrl = 'https://drive.google.com/file/d/19UuHkb9JFtELj_wqNsBDzLfGWmgeP30d/view?usp=drive_link';
+    const downloadUrl = 'https://drive.google.com/uc?export=download&id=19UuHkb9JFtELj_wqNsBDzLfGWmgeP30d';
 
     try {
       window.open(resumeUrl, '_blank');
